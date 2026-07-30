@@ -23,8 +23,19 @@
     <header class="header">
         <nav class="navbar">
             <a href="#inicio" class="logo">Omar López</a>
+            <button
+                class="menu-toggle"
+                type="button"
+                aria-label="Abrir menú de navegación"
+                aria-expanded="false"
+                aria-controls="navigation-menu"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
-            <ul class="nav-links">
+            <ul class="nav-links" id="navigation-menu">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#sobre-mi">Sobre mí</a></li>
                 <li><a href="#habilidades">Habilidades</a></li>
@@ -39,38 +50,50 @@
 
         <!-- Presentación principal -->
         <section id="inicio" class="hero">
-            <div class="hero-content">
+            <div class="hero-layout">
 
-                <p class="hero-introduction">
-                    Hola, soy
-                </p>
+                <div class="hero-content">
 
-                <h1>Omar Yesith López Arrieta</h1>
+                    <p class="hero-introduction">
+                     Hola, soy
+                    </p>
 
-                <h2>Backend Developer</h2>
+                    <h1>Omar López</h1>
 
-                <p>
-                    Desarrollo APIs y aplicaciones backend seguras,
-                    escalables y mantenibles utilizando Python,
-                    Django, Django REST Framework y FastAPI.
-                </p>
+                    <h2>Backend Developer</h2>
 
-                <div class="hero-buttons">
-                    <a href="#proyectos" class="button">
-                        Ver proyectos
-                    </a>
+                    <p>
+                        Desarrollo APIs y aplicaciones backend seguras,
+                        escalables y mantenibles utilizando Python,
+                        Django, Django REST Framework y FastAPI.
+                    </p>
 
-                    <a
-                        href="assets/documents/cv_omar_lopez.pdf"
-                        class="button"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    <div class="hero-buttons">
+                        <a href="#proyectos" class="button">
+                         Ver proyectos
+                        </a>
+
+                        <a
+                            href="assets/documents/cv_omar_lopez.pdf"
+                            class="button"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Ver CV
+                        </a>
+                    </div>
+
+                </div>
+                <div class="hero-photo-container">
+                    <img
+                        src="assets/images/omar-lopez.jpg"
+                        alt="Fotografía profesional de Omar López"
+                        class="hero-photo"
                     >
-                        Ver CV
-                    </a>
                 </div>
 
             </div>
+            
         </section>
 
         <!-- Información personal -->

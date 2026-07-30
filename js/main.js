@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCurrentYear();
     initializeSectionAnimations();
     initializeActiveNavigation();
+    initializeMobileMenu();
 });
 
 /**
@@ -110,5 +111,40 @@ function initializeActiveNavigation() {
 
     sections.forEach((section) => {
         observer.observe(section);
+    });
+}
+
+function initializeMobileMenu() {
+    const menuButton = document.querySelector(".menu-toggle");
+    const navigationMenu = document.querySelector(".nav-links");
+    const navigationLinks = document.querySelectorAll(".nav-links a");
+
+    if (!menuButton || !navigationMenu) {
+        return;
+    }
+
+    menuButton.addEventListener("click", () => {
+        const isOpen = navigationMenu.classList.toggle("open");
+
+        menuButton.classList.toggle("active", isOpen);
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+        menuButton.setAttribute(
+            "aria-label",
+            isOpen
+                ? "Cerrar menú de navegación"
+                : "Abrir menú de navegación"
+        );
+    });
+
+    navigationLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+            navigationMenu.classList.remove("open");
+            menuButton.classList.remove("active");
+            menuButton.setAttribute("aria-expanded", "false");
+            menuButton.setAttribute(
+                "aria-label",
+                "Abrir menú de navegación"
+            );
+        });
     });
 }

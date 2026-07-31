@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initializeSectionAnimations();
     initializeActiveNavigation();
     initializeMobileMenu();
+    initializeContactForm();
 });
 
 /**
@@ -146,5 +147,68 @@ function initializeMobileMenu() {
                 "Abrir menú de navegación"
             );
         });
+    });
+}
+
+function initializeContactForm() {
+    const form = document.querySelector("#contact-form");
+
+    if (!form) {
+        return;
+    }
+
+    const submitButton = form.querySelector(".form-submit");
+
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+
+        const originalButtonText = submitButton?.textContent;
+
+        if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.textContent = "Enviando...";
+        }
+
+        const formData = new FormData(form);
+        const encodedData = new URLSearchParams();
+
+        formData.forEach((value, key) => {
+            encodedData.append(key, String(value));
+        });
+
+        try {
+            const response = await fetch("/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: encodedData.toString(),
+            });
+
+            if (!response.ok) {
+                throw new Error(
+                    `Netlify respondió con estado ${response.status}`
+                );
+            }
+
+            window.location.assign("/gracias.html");
+        } catch (error) {
+            console.error("Error al enviar el formulario:", error);
+
+            alert(
+                "No se pudo enviar el mensaje. Intenta nuevamente o utiliza el correo de contacto."
+            );
+
+            if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.textContent =
+                    originalButtonText || "Enviar mensaje";
+            }
+        }
     });
 }

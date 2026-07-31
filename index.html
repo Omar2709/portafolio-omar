@@ -442,7 +442,8 @@
                         </details>
 
                         <div class="project-actions">
-                            <a href="https://github.com/Omar2709/Bienestar" class="project-link" target="_blank" rel="noopener noreferrer">
+                            <a href="https://github.com/Omar2709/Bienestar" class="project-link" target="_blank"
+                                rel="noopener noreferrer">
                                 Ver mi fork
                             </a>
 
@@ -458,34 +459,106 @@
         </section>
 
         <!-- Contacto -->
-        <section id="contacto" class="section">
-            <h2>Contacto</h2>
+        <section id="contacto" class="section contact-section">
+            <div class="section-heading">
+                <p class="section-label">Hablemos</p>
+                <h2>Contacto</h2>
 
-            <p>
-                Puedes conocer mis proyectos y contactarme mediante
-                mis redes profesionales.
-            </p>
-
-            <div class="social-links">
-
-                <a href="https://github.com/Omar2709" target="_blank" rel="noopener noreferrer">
-                    GitHub
-                </a>
-
-                <a href="https://www.linkedin.com/in/omar-l%C3%B3pez-8a0009269/" target="_blank"
-                    rel="noopener noreferrer">
-                    LinkedIn
-                </a>
-
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=omarrglopez@gmail.com&su=Contacto%20desde%20tu%20portafolio"
-                    target="_blank" rel="noopener noreferrer">
-                    Enviar correo
-                </a>
+                <p>
+                    Puedes escribirme para conversar sobre oportunidades
+                    laborales, proyectos backend o colaboraciones.
+                </p>
             </div>
 
-            <p class="contact-email">
-                Correo: omarrglopez@gmail.com
-            </p>
+            <div class="contact-layout">
+
+                <div class="contact-information">
+                    <h3>Información de contacto</h3>
+
+                    <p>
+                        Completa el formulario y responderé mediante el
+                        correo electrónico que proporciones.
+                    </p>
+
+                    <div class="contact-methods">
+                        <a href="https://github.com/Omar2709" target="_blank" rel="noopener noreferrer">
+                            <span>GitHub</span>
+                            <strong>Omar2709</strong>
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/omar-l%C3%B3pez-8a0009269/" target="_blank" rel="noopener noreferrer">
+                            <span>LinkedIn</span>
+                            <strong>Omar López</strong>
+                        </a>
+
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=omarrglopez@gmail.com" target="_blank"
+                            rel="noopener noreferrer">
+                            <span>Correo</span>
+                            <strong>omarrglopez@gmail.com</strong>
+                        </a>
+                    </div>
+                </div>
+
+                <form class="contact-form" name="contacto-portafolio" method="POST" action="/gracias.html"
+                    data-netlify="true" netlify-honeypot="campo-oculto">
+                    <input type="hidden" name="form-name" value="contacto-portafolio">
+
+                    <p class="hidden-field">
+                        <label>
+                            No completes este campo:
+                            <input name="campo-oculto">
+                        </label>
+                    </p>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nombre">
+                                Nombre
+                            </label>
+
+                            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" autocomplete="name"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="correo">
+                                Correo electrónico
+                            </label>
+
+                            <input type="email" id="correo" name="correo" placeholder="correo@ejemplo.com"
+                                autocomplete="email" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="asunto">
+                            Asunto
+                        </label>
+
+                        <input type="text" id="asunto" name="asunto" placeholder="Motivo del mensaje" maxlength="120"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mensaje">
+                            Mensaje
+                        </label>
+
+                        <textarea id="mensaje" name="mensaje" rows="6" placeholder="Escribe tu mensaje..."
+                            minlength="10" maxlength="1500" required></textarea>
+                    </div>
+
+                    <button type="submit" class="form-submit">
+                        Enviar mensaje
+                    </button>
+
+                    <p class="form-notice">
+                        Tus datos se utilizarán únicamente para responder
+                        este mensaje.
+                    </p>
+                </form>
+
+            </div>
         </section>
 
     </main>

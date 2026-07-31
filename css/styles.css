@@ -876,45 +876,178 @@ a:focus-visible {
    CONTACTO
 ================================ */
 
-#contacto {
+.contact-section {
+    width: min(1120px, 90%);
     margin-bottom: 80px;
-    padding: 55px;
-
-    background:
-        linear-gradient(135deg,
-            rgba(56, 189, 248, 0.1),
-            rgba(23, 32, 51, 0.7));
-    border: 1px solid var(--border-color);
-    border-radius: 18px;
 }
 
-.social-links {
-    margin-top: 30px;
+.contact-layout {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
+    gap: 30px;
+    align-items: start;
+}
+
+.contact-information,
+.contact-form {
+    padding: 32px;
+
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+
+    box-shadow: var(--shadow);
+}
+
+.contact-information h3 {
+    margin-bottom: 15px;
+
+    color: var(--white);
+    font-size: 1.35rem;
+}
+
+.contact-information>p {
+    margin-bottom: 28px;
+}
+
+.contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contact-methods a {
+    padding: 14px 16px;
 
     display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
+    flex-direction: column;
+    gap: 3px;
+
+    background-color: rgba(56, 189, 248, 0.06);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+
+    transition:
+        border-color var(--transition),
+        background-color var(--transition),
+        transform var(--transition);
 }
 
-.social-links a {
-    padding: 11px 20px;
+.contact-methods a:hover {
+    background-color: rgba(56, 189, 248, 0.1);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
 
+.contact-methods span {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+.contact-methods strong {
+    color: var(--primary-color);
+    font-size: 0.92rem;
+    overflow-wrap: anywhere;
+}
+
+/* Formulario */
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    color: var(--text-color);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 13px 15px;
+
+    background-color: var(--background);
+    border: 1px solid var(--border-color);
+    border-radius: 9px;
+
+    color: var(--white);
+    font: inherit;
+
+    outline: none;
+
+    transition:
+        border-color var(--transition),
+        box-shadow var(--transition);
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #718096;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.12);
+}
+
+.form-submit {
+    width: fit-content;
+    min-height: 46px;
+    padding: 11px 24px;
+
+    background-color: var(--primary-color);
     border: 1px solid var(--primary-color);
     border-radius: 8px;
 
-    color: var(--primary-color);
-    font-weight: 600;
+    color: var(--background);
+    font: inherit;
+    font-weight: 700;
+
+    cursor: pointer;
 
     transition:
         background-color var(--transition),
+        border-color var(--transition),
         color var(--transition),
         transform var(--transition);
 }
 
-.social-links a:hover {
-    background-color: var(--primary-color);
-    color: var(--background);
-    transform: translateY(-3px);
+.form-submit:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+    color: var(--white);
+
+    transform: translateY(-2px);
+}
+
+.form-notice {
+    font-size: 0.8rem;
+}
+
+.hidden-field {
+    position: absolute;
+    left: -9999px;
 }
 
 /* ================================
@@ -980,6 +1113,10 @@ a:focus-visible {
         width: 260px;
         justify-self: center;
         order: -1;
+    }
+
+    .contact-layout {
+        grid-template-columns: 1fr;
     }
 
 }
@@ -1049,9 +1186,21 @@ a:focus-visible {
         padding-left: 30px;
     }
 
-    #contacto {
+    .contact-section {
         width: 88%;
-        padding: 35px 24px;
+    }
+
+    .contact-information,
+    .contact-form {
+        padding: 22px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .form-submit {
+        width: 100%;
     }
 
     .social-links {
@@ -1300,4 +1449,78 @@ a:focus-visible {
     margin-top: 20px;
     color: var(--text-secondary);
     font-size: 0.95rem;
+}
+
+/* ================================
+   CONFIRMACIÓN DEL FORMULARIO
+================================ */
+
+.success-page {
+    min-height: 100vh;
+
+    display: grid;
+    place-items: center;
+
+    padding: 30px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(56, 189, 248, 0.12),
+            transparent 45%
+        ),
+        var(--background);
+}
+
+.success-container {
+    width: min(100%, 620px);
+}
+
+.success-card {
+    padding: 55px 40px;
+
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 18px;
+
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.success-symbol {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 24px;
+
+    display: grid;
+    place-items: center;
+
+    background-color: rgba(34, 197, 94, 0.12);
+    border: 2px solid #22c55e;
+    border-radius: 50%;
+
+    color: #22c55e;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.success-card h1 {
+    margin-bottom: 18px;
+
+    color: var(--white);
+    font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.success-card p:not(.section-label) {
+    margin-bottom: 30px;
+}
+
+@media (max-width: 600px) {
+    .success-card {
+        padding: 40px 24px;
+    }
+
+    .success-card .button {
+        width: 100%;
+    }
 }

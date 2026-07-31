@@ -158,6 +158,7 @@ function initializeContactForm() {
     }
 
     const submitButton = form.querySelector(".form-submit");
+    const submitButtonText = submitButton?.querySelector("span");
 
     form.addEventListener("submit", async (event) => {
         event.preventDefault();
@@ -167,11 +168,10 @@ function initializeContactForm() {
             return;
         }
 
-        const originalButtonText = submitButton?.textContent;
+        const originalButtonText = submitButtonText?.textContent;
 
-        if (submitButton) {
-            submitButton.disabled = true;
-            submitButton.textContent = "Enviando...";
+        if (submitButtonText) {
+            submitButtonText.textContent = "Enviando...";
         }
 
         const formData = new FormData(form);
@@ -206,7 +206,10 @@ function initializeContactForm() {
 
             if (submitButton) {
                 submitButton.disabled = false;
-                submitButton.textContent =
+            }
+
+            if (submitButtonText) {
+                submitButtonText.textContent =
                     originalButtonText || "Enviar mensaje";
             }
         }
